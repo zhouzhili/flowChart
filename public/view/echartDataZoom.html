@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataZoom</title>
+    <script src="../lib/requirejs/require-2.3.2.js"></script>
+    <script src="../js/appConfig.js"></script>
+    <script>
+        require(['echarts', 'jquery'], function (echarts, $) {
+            var data = [];
+            var x = [];
+            for (var i = 0; i < 30; i++) {
+                data.push(Math.floor(Math.random() * (100 + 1)));
+                x.push(i);
+            }
+
+            var options = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                xAxis: {
+                    type: 'category',
+                    min: 'dataMin',
+                    max: 'dataMax',
+                    splitLine: {
+                        show: true
+                    },
+                    data: x
+                },
+                yAxis: {
+                    min: 'dataMin',
+                    max: 'dataMax',
+                    splitLine: {
+                        show: true
+                    }
+                },
+                dataZoom: [
+                    {
+                        type: 'slider',
+                        show: true,
+                        xAxisIndex: [0],
+                        start: 0,
+                        end: 29
+                    }
+                ],
+                series: [
+                    {
+                        type: 'line',
+                        data: data
+                    }
+                ]
+            };
+
+            var myChart = echarts.init(document.getElementById('container'));
+            myChart.setOption(options);
+
+            var count=0;
+            function update () {
+                var length = x.length;
+                x.push(x[length - 1] + 1);
+                data.push(Math.floor(Math.random() * (100 + 1)));
+
+                myChart.setOption({
+                    dataZoom:[
+                        {
+                            xAxisIndex: [0],
+                            startValue: x[count],
+                            endValue: x[length]
+                        }
+                    ],
+                    xAxis:{
+                        data:x
+                    },
+                    series:{
+                        data:data
+                    }
+                });
+                count++;
+            }
+
+            var flag=true;
+            var interval= setInterval(update, 1000);
+
+            $('#stop').click(function () {
+                clearInterval(interval);
+                flag=false;
+            });
+
+            $('#reStart').click(function () {
+                if(!flag){
+                    interval= setInterval(update, 1000);
+                    flag=true;
+                }
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div style="height: 300px;width: 600px" id="container"></div>
+<div>
+    <button id="stop">停止</button>
+    <button id="reStart">开始</button>
+</div>
+</body>
+</html>

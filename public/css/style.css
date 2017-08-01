@@ -1,0 +1,53 @@
+.infoTable {
+    padding: 3px;
+    background-color: #fff;
+    font-size: 12px;
+    position: absolute;
+    z-index: 999;
+}
+.mxContainer {
+    height: 600px;
+    overflow: scroll;
+    background: url('../image/grid.gif')
+}
+.toolBox img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.toolBox button {
+    margin-top: 10px;
+    margin-left: 20px;
+    display: block;
+}
+
+#toolbar{
+    position: absolute;
+    top: 0px;
+    width: 30px;
+    padding: 3px;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+}
+
+#toolbar>img{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+}
+.carDiv{
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    border-radius: 3px;
+    background-color: red;
+    /*display: none;*/
+    z-index: 999;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图表</title>
+    <script src="../lib/requirejs/require-2.3.2.js"></script>
+    <script src="../js/appConfig.js"></script>
+    <script>
+        require(['js/controller/chart'], function (chart) {
+            chart.init();
+        });
+    </script>
+</head>
+<body>
+<div style="height: 300px;width: 100%" id="container"></div>
+<input type="date" id="fromDate" value="2017-01-01"><br/>
+<input type="date" id="endDate" value="2017-12-31"><br/>
+<button id="btn">改变时间</button>
+</body>
+</html>

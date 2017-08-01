@@ -1,0 +1,26 @@
+{
+  "name": "flowchart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhouzhili/flowChart.git"
+  },
+  "author": "zzl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhouzhili/flowChart/issues"
+  },
+  "homepage": "https://github.com/zhouzhili/flowChart#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "jquery-confirm": "^3.2.3",
+    "socket.io": "^2.0.3"
+  }
+}

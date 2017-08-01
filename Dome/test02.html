@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script type="text/javascript">
+        mxBasePath = 'lib/mxGraph/src/'
+    </script>
+    <script src="lib/mxGraph/mxClient.js"></script>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+    <script src="js/data.js"></script>
+    <script src="js/controller.js"></script>
+
+    <style>
+        .infoTable {
+            padding: 3px;
+            background-color: #fff;
+            font-size: 12px;
+            position: absolute;
+            z-index: 999;
+        }
+        .mxContainer {
+            height: 680px;
+            overflow: scroll;
+            background: url('image/grid.gif')
+        }
+        .toolBox img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .toolBox button {
+            margin-top: 10px;
+            margin-left: 20px;
+            display: block;
+        }
+
+        #toolbar{
+            position: absolute;
+            top: 0px;
+            width: 30px;
+            padding: 3px;
+            background-color: #fff;
+            overflow: hidden;
+            z-index: 999;
+            display: none;
+        }
+
+        #toolbar>img{
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+        .carDiv{
+            position: absolute;
+            height: 6px;
+            width: 6px;
+            border-radius: 3px;
+            background-color: red;
+            /*display: none;*/
+            z-index: 999;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10">
+            <div id="toolbar"></div>
+            <div id="graphicContainer" class="mxContainer"></div>
+        </div>
+
+        <div class="toolBox col-sm-2">
+            <div>
+                <button class="btn-primary btn" id="clearAll">清除所有</button>
+                <button class="btn-primary btn" id="addNode">手动添加节点</button>
+
+                <button class="btn-primary btn" id="viewXML">显示XML</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

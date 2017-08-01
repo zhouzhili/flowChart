@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>toolbar</title>
+    <script type="text/javascript">
+        mxBasePath = 'javascript/src/'
+    </script>
+    <script src="javascript/mxClient.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="node_modules/jquery-confirm/dist/jquery-confirm.min.css">
+    <script src="node_modules/jquery-confirm/dist/jquery-confirm.min.js"></script>
+
+    <!--<script src="js/data.js"></script>-->
+    <!--<script src="js/controller.js"></script>-->
+    <script src="js/toolbarTest.js"></script>
+    <style>
+        .infoTable {
+            padding: 3px;
+            background-color: #fff;
+            font-size: 12px;
+            position: absolute;
+            z-index: 999;
+        }
+        .mxContainer {
+            height: 680px;
+            overflow: scroll;
+            background: url('image/grid.gif')
+        }
+        .toolBox img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .wrap {
+            height: 100px;
+            width: 144px;
+            position: absolute;
+            background-color: rgba(218, 218, 218, 0.66);
+            margin: -10px
+        }
+
+        .toolBox button {
+            margin-top: 10px;
+            margin-left: 20px;
+            display: block;
+        }
+
+        .nodeImg {
+            border: 1px solid #0077ff;;
+            margin-top: 10px;
+            margin-left: 20px;
+            padding: 10px;
+        }
+        #toolbar{
+            position: absolute;
+            top: 0px;
+            width: 30px;
+            padding: 2px;
+            background-color: #fff;
+            overflow: hidden;
+            z-index: 999;
+        }
+        #toolbar>img{
+            height: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10">
+            <div id="toolbar"></div>
+            <div id="graphicContainer" class="mxContainer"></div>
+        </div>
+
+        <div class="toolBox col-sm-2">
+            <div>
+                <button class="btn-primary btn" id="clearAll">清除所有</button>
+                <button class="btn-primary btn" id="addNode">手动添加节点</button>
+                <button class="btn-primary btn" id="delete">删除节点</button>
+                <button class="btn-primary btn" id="autoLayout">自动布局</button>
+                <button class="btn-primary btn" id="addNodeFServer">读取模拟数据</button>
+                <button class="btn-primary btn" id="viewXML">显示XML</button>
+                <button class="btn-primary btn" id="test">测试</button>
+            </div>
+            <div class="nodeImg">
+                <div class="wrap"></div>
+                <div>
+                    <img src="image/server.svg" title="服务器节点" id="server">
+                    <img src="image/pc.svg" title="主机节点" id="pc">
+                </div>
+                <div>
+                    <img src="image/cloud.svg" title="云主机节点" id="cloud">
+                    <img src="image/global.svg" title="根节点" id="global">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+         id="editInfoModel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">编辑节点信息</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="nType" class="col-sm-4 control-label">节点类型</label>
+                            <div class="col-sm-8">
+                                <select id="nType" class="form-control">
+                                    <option value="cloud">云服务器</option>
+                                    <option value="global">根务器</option>
+                                    <option value="server">一般服务器</option>
+                                    <option value="pc">个人主机</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nodeValue" class="col-sm-4 control-label">节点值</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nodeValue" placeholder="节点值">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nodeState" class="col-sm-4 control-label">节点状态</label>
+                            <div class="col-sm-8">
+                                <select id="nodeState" class="form-control">
+                                    <option value="normal">运行正常</option>
+                                    <option value="warning">运行异常</option>
+                                    <option value="error">运行错误</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="saveInfo">保存更改</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
